@@ -4,6 +4,13 @@ const { Pool } = require('pg');
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 const pool = new Pool({
   host: process.env.DB_HOSTNAME || 'localhost',
   port: process.env.DB_PORT || 5432,
@@ -28,7 +35,7 @@ app.get('/healthz', (req, res) => {
 
 async function start() {
   try {
-    await pool.query('SELECT 1');
+   await pool.query('SELECT 1');
   } catch (err) {
     console.error('Startup DB connectivity check failed:', err);
     process.exit(1);
