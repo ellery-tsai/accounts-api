@@ -1,0 +1,13 @@
+{
+  "name": "accounts-api-broken",
+  "version": "1.0.0",
+  "description": "OCP course module 3 sandbox: accounts API with an injected config bug for the troubleshooting exercise",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  }
+}
